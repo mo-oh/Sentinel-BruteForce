@@ -39,8 +39,9 @@ A brute-force attack is simulated from **Evil-VM** to **Victim-VM** using a Powe
 
 ```powershell
 # Simulates brute-force attack by generating Event ID 4625 logs on Victim-VM
-for ($i = 1; $i -le 1000; $i++) {
-    net use \\10.0.0.5\c$ /user:Adm!n /password:wrongpassword
+for ($i = 1; $i -le 1000; $i++)
+{
+    net use \\10.0.0.5\c$ wrongpassword /user:Adm!n
 }
 ```
 
@@ -102,15 +103,15 @@ When the KQL rule triggers, **Azure Logic Apps** launches a playbook to:
 /sentinel-soar-automated-cloud-incident-response
 │
 ├── README.md
-├── powershell/
-│   └── brute_force_attack.ps1
+├── bruteforce/
+│   └── bruteforce-attack-sc
 ├── kql/
-│   └── brute_force_detection.kql
+│   └── bf-detection-sc
 ├── logicapps/
 │   └── playbook_workflow.json
 └── evidence/
-    ├── eventviewer_screenshot.png
-    ├── kql_results_screenshot.png
+    ├── eventviewer-sc
+    ├── kql-results-sc
     └── logicapp_workflow_screenshot.png
 ```
 
